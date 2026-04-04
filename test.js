@@ -6,7 +6,7 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
 
-  if (url.pathname.endsWith('/1.txt')) {
+  if (url.pathname.includes('.txt')) {
     event.respondWith(
       fetch('/geometrydashdotcom/2.txt')
     );
