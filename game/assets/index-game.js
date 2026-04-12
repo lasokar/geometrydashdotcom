@@ -80173,7 +80173,7 @@ class xs extends Phaser.Scene {
       this._expandHitArea(v8159, 2.5);
       this._toggleFullscreen();
     });
-    this._pauseContainer.add(this.add.bitmapText(v8153, 65, "bigFont", "Stereo Madness", 40).setOrigin(0.5, 0.5));
+    this._pauseContainer.add(this.add.bitmapText(v8153, 65, "bigFont", document._levelTitle || "Stereo Madness", 40).setOrigin(0.5, 0.5));
     const vLN170 = 170;
     const v8161 = this._bestPercent || 0;
     const v8162 = this.add.image(v8153, vLN170, "GJ_WebSheet", "GJ_progressBar_001.png").setTint(0).setAlpha(125 / 255);

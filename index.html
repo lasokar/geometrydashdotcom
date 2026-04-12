@@ -149,29 +149,29 @@
 
   <div id="levels" class="tab-content active">
     <button class="level-btn custom-input" onclick="promptLevel()">Custom Level (from GD servers)</button>
-    <button class="level-btn" onclick="loadLevel('-1')">Stereo Madness</button>
-    <button class="level-btn" onclick="loadLevel('-2')">Back on Track</button>
-    <button class="level-btn" onclick="loadLevel('-3')">Polargeist</button>
-    <button class="level-btn" onclick="loadLevel('-4')">Dry Out</button>
-    <button class="level-btn" onclick="loadLevel('-5')">Base after Base</button>
-    <button class="level-btn" onclick="loadLevel('-6')">Cant Let Go</button>
-    <button class="level-btn" onclick="loadLevel('-7')">Jumper</button>
-    <button class="level-btn" onclick="loadLevel('-8')">Time Machine</button>
-    <button class="level-btn" onclick="loadLevel('-9')">Cycles</button>
-    <button class="level-btn" onclick="loadLevel('-10')">xStep</button>
-    <button class="level-btn" onclick="loadLevel('-11')">Clutterfunk</button>
-    <button class="level-btn" onclick="loadLevel('-12')">Theory of Everything</button>
-    <button class="level-btn" onclick="loadLevel('-13')">Electroman Adventures</button>
-    <button class="level-btn" onclick="loadLevel('-14')">Clubstep</button>
-    <button class="level-btn" onclick="loadLevel('-15')">Electrodynamix</button>
-    <button class="level-btn" onclick="loadLevel('-16')">Hexagon Force</button>
-    <button class="level-btn" onclick="loadLevel('-17')">Blast Processing</button>
-    <button class="level-btn" onclick="loadLevel('-18')">Theory of Everything 2</button>
-    <button class="level-btn" onclick="loadLevel('-19')">Geometrical Dominator</button>
-    <button class="level-btn" onclick="loadLevel('-20')">Deadlocked</button>
-    <button class="level-btn" onclick="loadLevel('-21')">Fingerdash</button>
-    <button class="level-btn" onclick="loadLevel('-22')">Dash</button>
-    <button class="level-btn" onclick="loadLevel('-23')">Every End</button>
+    <button class="level-btn" onclick="loadLevel('-1', 'Stereo Madness')">Stereo Madness</button>
+    <button class="level-btn" onclick="loadLevel('-2', 'Back on Track')">Back on Track</button>
+    <button class="level-btn" onclick="loadLevel('-3', 'Polargeist')">Polargeist</button>
+    <button class="level-btn" onclick="loadLevel('-4', 'Dry Out')">Dry Out</button>
+    <button class="level-btn" onclick="loadLevel('-5', 'Base after Base')">Base after Base</button>
+    <button class="level-btn" onclick="loadLevel('-6', 'Cant Let Go')">Cant Let Go</button>
+    <button class="level-btn" onclick="loadLevel('-7', 'Jumper')">Jumper</button>
+    <button class="level-btn" onclick="loadLevel('-8', 'Time Machine')">Time Machine</button>
+    <button class="level-btn" onclick="loadLevel('-9', 'Cycles')">Cycles</button>
+    <button class="level-btn" onclick="loadLevel('-10', 'xStep')">xStep</button>
+    <button class="level-btn" onclick="loadLevel('-11', 'Clutterfunk')">Clutterfunk</button>
+    <button class="level-btn" onclick="loadLevel('-12', 'Theory of Everything')">Theory of Everything</button>
+    <button class="level-btn" onclick="loadLevel('-13', 'Electroman Adventures')">Electroman Adventures</button>
+    <button class="level-btn" onclick="loadLevel('-14', 'Clubstep')">Clubstep</button>
+    <button class="level-btn" onclick="loadLevel('-15', 'Electrodynamix')">Electrodynamix</button>
+    <button class="level-btn" onclick="loadLevel('-16', 'Hexagon Force')">Hexagon Force</button>
+    <button class="level-btn" onclick="loadLevel('-17', 'Blast Processing')">Blast Processing</button>
+    <button class="level-btn" onclick="loadLevel('-18', 'Theory of Everything 2')">Theory of Everything 2</button>
+    <button class="level-btn" onclick="loadLevel('-19', 'Geometrical Dominator')">Geometrical Dominator</button>
+    <button class="level-btn" onclick="loadLevel('-20', 'Deadlocked')">Deadlocked</button>
+    <button class="level-btn" onclick="loadLevel('-21', 'Fingerdash')">Fingerdash</button>
+    <button class="level-btn" onclick="loadLevel('-22', 'Dash')">Dash</button>
+    <button class="level-btn" onclick="loadLevel('-23', 'Every End')">Every End</button>
   </div>
 
   <div id="demonlist" class="tab-content">
@@ -195,8 +195,8 @@
       event.currentTarget.classList.add("active");
     }
 
-    function loadLevel(id) {
-      window.location.href = `./game/index.html?id=${id}`;
+    function loadLevel(id, title) {
+      window.location.href = `./game/index.html?id=${id}&title=${encodeURIComponent(title)}`;
     }
 
     function promptLevel() {
@@ -210,7 +210,7 @@
       if (id.trim() === '') {
         alert('Please enter a Level ID');
       } else {
-        loadLevel(id);
+        loadLevel(id, id);
       }
     }
   </script>
