@@ -15,14 +15,14 @@ self.addEventListener("fetch", (event) => {
   if (levelID < 0) {
     if (url.pathname.includes("1.txt")) {
       event.respondWith(
-        fetch(`/geometrydashdotcom/game/assets/levels/${levelID}.txt`)
+        fetch(`./assets/levels/${levelID}.txt`)
       );
       return;
     }
 
     if (url.pathname.includes("StereoMadness.mp3")) {
       event.respondWith(
-        fetch(`/geometrydashdotcom/game/assets/music/${levelID}.mp3`)
+        fetch(`./assets/music/${levelID}.mp3`)
       );
       return;
     }
