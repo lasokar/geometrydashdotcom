@@ -17,6 +17,23 @@ self.addEventListener('install', event => {
 
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);  
+  
+  if (!levelID && levelString) {
+    if (url.pathname.includes("1.txt")) {
+      event.respondWith(new Response(levelString), {
+        headers: { "Content-Type": "text/plain" },
+      });
+      return;
+    }
+
+    if (url.pathname.includes("StereoMadness.mp3")) {
+      event.respondWith(
+        fetch(`https://fetchsongid.lasokar.workers.dev?id=${songID}`),
+      );
+      return;
+    }
+  }
+  
   if (levelID < 0) {
     if (url.pathname.includes("1.txt")) {
       event.respondWith(
@@ -42,22 +59,6 @@ self.addEventListener("fetch", (event) => {
     if (url.pathname.includes("StereoMadness.mp3")) {
       event.respondWith(
         fetch(`https://getlevelsong.lasokar.workers.dev?id=${levelID}`)
-      );
-      return;
-    }
-  }
-
-  if (!levelID && levelString) {
-    if (url.pathname.includes("1.txt")) {
-      event.respondWith(new Response(levelString), {
-        headers: { "Content-Type": "text/plain" },
-      });
-      return;
-    }
-
-    if (url.pathname.includes("StereoMadness.mp3")) {
-      event.respondWith(
-        fetch(`https://fetchsongid.lasokar.workers.dev?id=${songID}`),
       );
       return;
     }
