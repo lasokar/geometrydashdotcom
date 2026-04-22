@@ -13,7 +13,7 @@
   <script>
     var levelId = Number(new URLSearchParams(location.search).get('id'));
     var levelString = new URLSearchParams(location.search).get('string');
-    var songID = Number(new URLSearchParams(location.search).get('song')) || 500476;
+    var songID = Number(new URLSearchParams(location.search).get('songID')) || 500476;
     async function start() {
       await navigator.serviceWorker.register('../worker.js');
       await navigator.serviceWorker.ready;
