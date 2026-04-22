@@ -1,8 +1,19 @@
 let levelID = null;
+let levelString = null;
+let songID = null;
+
+if (!event.data.levelId && event.data.levelString){
+  let isLocal = true;
+} else{
+  let isLocal = false;
+}
 
 self.addEventListener('message', event => {
-  if (event.data.levelId) {
+  if (!isLocal) {
     levelID = event.data.levelId;
+  } else {
+    levelString = event.data.levelString;
+    songID = event.data.songID;
   }
 });
 
@@ -37,6 +48,22 @@ self.addEventListener("fetch", (event) => {
     if (url.pathname.includes("StereoMadness.mp3")) {
       event.respondWith(
         fetch(`https://getlevelsong.lasokar.workers.dev?id=${levelID}`)
+      );
+      return;
+    }
+  }
+
+  if (isLocal) {
+    if (url.pathname.includes("1.txt")) {
+      event.respondWith(new Response(levelString), {
+        headers: { "Content-Type": "text/plain" },
+      });
+      return;
+    }
+
+    if (url.pathname.includes("StereoMadness.mp3")) {
+      event.respondWith(
+        fetch(`https://fetchsongid.lasokar.workers.dev?id=${songID}`),
       );
       return;
     }
