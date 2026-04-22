@@ -4,7 +4,7 @@ let songID = null;
 
 self.addEventListener('message', event => {
   if (event.data.levelId !== undefined) {
-    levelID = event.data.levelId);
+    levelID = event.data.levelId;
   }
   if (event.data.levelString !== undefined) {
     levelString = event.data.levelString;
