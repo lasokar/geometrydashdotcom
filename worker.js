@@ -5,10 +5,12 @@ let songID = null;
 self.addEventListener('message', event => {
   if (event.data.levelId !== undefined) {
     levelID = event.data.levelId;
+    levelString = null;
   }
   if (event.data.levelString !== undefined) {
     levelString = event.data.levelString;
     songID = event.data.songID;
+    levelID = null;
   }
 });
 
