@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Geometry Dash</title>
-    <link rel="icon" href="/geometrydashdotcom/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <style>
         * { margin: 0; padding: 0; }
         body { overflow: hidden; background: black;}
@@ -15,7 +15,7 @@
     var levelString = Number(new URLSearchParams(location.search).get('string'));
     var songID = Number(new URLSearchParams(location.search).get('song')) || 500476;
     async function start() {
-      await navigator.serviceWorker.register('/geometrydashdotcom/worker.js');
+      await navigator.serviceWorker.register('../worker.js');
       await navigator.serviceWorker.ready;
 
       if (levelString) {
@@ -81,13 +81,13 @@
         if (fix) return;
         fix = true;
         alert("Level doesn't exist... are you sure you typed the ID correctly?");
-        window.location.href = "https://lasokar.github.io/geometrydashdotcom/";
+        window.location.href = "../";
       }
       if (event.data.type === "rate-limit") {
         if (fix) return;
         fix = true;
         alert("Site is currently being rate limited from GD servers, please try again later! (you may still use one of the default levels below)");
-        window.location.href = "https://lasokar.github.io/geometrydashdotcom/";
+        window.location.href = "../";
       }
       if (event.data.type === 'set-level-name') {
         window.levelName = event.data.name;
