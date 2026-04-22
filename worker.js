@@ -1,18 +1,11 @@
 let levelID = null;
 let levelString = null;
 let songID = null;
-let isLocal;
-
-if (event.data.levelId == undefined && event.data.levelString){
-  isLocal = true;
-} else{
-  isLocal = false;
-}
 
 self.addEventListener('message', event => {
-  if (!isLocal) {
+  if (event.data.levelId) {
     levelID = event.data.levelId;
-  } else {
+  } else if (event.data.levelString){
     levelString = event.data.levelString;
     songID = event.data.songID;
   }
@@ -54,7 +47,7 @@ self.addEventListener("fetch", (event) => {
     }
   }
 
-  if (isLocal) {
+  if (!levelID && levelString) {
     if (url.pathname.includes("1.txt")) {
       event.respondWith(new Response(levelString), {
         headers: { "Content-Type": "text/plain" },
