@@ -18,7 +18,7 @@ self.addEventListener('install', event => {
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);  
   
-  if (!levelID && levelString) {
+  if (levelID == null && levelString != null) {
     if (url.pathname.includes("1.txt")) {
       event.respondWith(new Response(levelString), {
         headers: { "Content-Type": "text/plain" },
