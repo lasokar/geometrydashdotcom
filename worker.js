@@ -1,11 +1,12 @@
 let levelID = null;
 let levelString = null;
 let songID = null;
+let isLocal;
 
-if (!event.data.levelId && event.data.levelString){
-  let isLocal = true;
+if (event.data.levelId == undefined && event.data.levelString){
+  isLocal = true;
 } else{
-  let isLocal = false;
+  isLocal = false;
 }
 
 self.addEventListener('message', event => {
