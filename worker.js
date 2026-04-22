@@ -3,9 +3,10 @@ let levelString = null;
 let songID = null;
 
 self.addEventListener('message', event => {
-  if (event.data.levelId) {
-    levelID = event.data.levelId;
-  } else if (event.data.levelString){
+  if (event.data.levelId !== undefined) {
+    levelID = event.data.levelId);
+  }
+  if (event.data.levelString !== undefined) {
     levelString = event.data.levelString;
     songID = event.data.songID;
   }
@@ -18,7 +19,7 @@ self.addEventListener('install', event => {
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);  
   
-  if (levelID == null && levelString != null) {
+  if (levelID == null && levelString !== null) {
     if (url.pathname.includes("1.txt")) {
       event.respondWith(new Response(levelString), {
         headers: { "Content-Type": "text/plain" },
